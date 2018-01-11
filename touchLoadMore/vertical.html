@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+
+        html,body{
+            height: 100%;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            background-color: #ccc;
+        }
+
+        div{
+            max-width: 640px;
+            overflow: hidden;
+            height: 100%;
+        }
+        ul{
+            clear: both;
+            list-style: none;
+            padding-left: 0px;
+            margin: 0px;
+        }
+
+        ul>li{
+            text-align: center;
+            background-color: #9155aa;
+            height: 50px;
+            line-height: 50px;
+            margin-top: 2px;
+        }
+
+        span{
+            position: fixed;
+            top: 30px;
+            z-index: 2;
+        }
+
+    </style>
+
+    <script src="./xScroll.js"></script>
+    <script type="text/javascript">
+        onload = function(){
+            var div = document.querySelector("div");
+            var ul = document.querySelector("ul");
+
+            var span = document.querySelector("span");
+            xScroll.scroll(ul,0,div.offsetHeight - ul.offsetHeight,true,function(e,o){
+                if(undefined == o)
+                    return;
+                o ? span.innerHTML = "下拉到顶" : span.innerHTML = "上拉到低";
+            });
+
+            var lis = ul.children;
+            for(var i=0;i<lis.length;i++)
+                xScroll.onTip(lis[i],function(e){ console.log(this.innerHTML) });
+        };
+    </script>
+
+</head>
+<body>
+
+    <span>瓜娃子</span>
+
+    <div>
+        <ul>
+            <li>月色倍清</li>
+            <li>刀锋倍冷</li>
+            <li>茫茫天涯路</li>
+            <li>迷人月儿薄纱背后</li>
+            <li>谁在妄想把天偷</li>
+            <li>烈酒最香</li>
+            <li>毒花最美</li>
+            <li>如何去消受</li>
+            <li>谁能料想明日酒醒以后</li>
+            <li>人尚暖</li>
+            <li>头还在</li>
+            <li>在欢呼声中竟充满毒咒</li>
+            <li>床中的枕与食早施布了陷阱</li>
+            <li>掌握的一双手</li>
+            <li>亦忽变作拳头</li>
+            <li>鲜血未冷</li>
+            <li>情义已尽</li>
+            <li>何日刀锋断我愁?</li>
+        </ul>
+    </div>
+</body>
+</html>

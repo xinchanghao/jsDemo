@@ -80,4 +80,3 @@ window.onload = function(){
         list.appendChild(oLi);
     };
 }
-

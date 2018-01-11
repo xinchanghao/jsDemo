@@ -1,0 +1,25 @@
+{
+  "name": "jsdemo",
+  "version": "1.0.0",
+  "description": "demos for javascript ",
+  "main": "main.js",
+  "dependencies": {
+    "webpack": "^3.10.0"
+  },
+  "devDependencies": {
+    "webpack": "^3.10.0"
+  },
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xinchanghao/jsDemo.git"
+  },
+  "author": "huafeng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xinchanghao/jsDemo/issues"
+  },
+  "homepage": "https://github.com/xinchanghao/jsDemo#readme"
+}

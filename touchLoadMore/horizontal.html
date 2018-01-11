@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+        body,html,ul{
+            padding: 0;
+            margin: 0;
+        }
+
+        div{
+            max-width: 640px;
+            overflow: hidden;
+        }
+        ul{
+            clear: both;
+            list-style: none;
+            width: 1999px;
+            height: 30px; /* 如果不设置高度，则第一次滑动正常，之后滑动都不会响应touchmove事件 */
+        }
+
+        ul>li{
+            float: left;
+            width: 50px;
+            text-align: center;
+            background-color: #9155aa;
+            height: 30px;
+            line-height: 30px;
+        }
+
+        a{
+            display: block;
+            height: 50px;
+            background-color: #23527c;
+        }
+
+    </style>
+
+    <script src="./xScroll.js"></script>
+    <script type="text/javascript">
+        onload = function(){
+            var div = document.querySelector("div");
+            var ul = document.querySelector("ul");
+            var span = document.querySelector("span");
+
+// TODO li标签浮动ul不设置高度,第一次滑动可以正常响应touchmove事件，之后不再响应touchmove事件，但是响应touchstart和touchend
+
+            var min = 0;
+            var ul_lis = ul.children;
+            for(var i=0;i<ul_lis.length;i++)
+                min += ul_lis[i].offsetWidth;
+            xScroll.scroll(ul,0,div.offsetWidth - min,function(e,o){
+                if(undefined == o)
+                    return;
+                o ? span.innerHTML = "左滑到顶" : span.innerHTML = "右滑到底" ;
+            });
+        };
+
+
+    </script>
+
+</head>
+<body>
+
+    <span>二狗子</span>
+
+    <div>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+            <li>10</li>
+            <li>11</li>
+            <li>12</li>
+        </ul>
+    </div>
+
+</body>
+</html>
