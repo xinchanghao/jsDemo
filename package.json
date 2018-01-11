@@ -2,15 +2,19 @@
   "name": "jsdemo",
   "version": "1.0.0",
   "description": "demos for javascript ",
-  "main": "main.js",
+  "main": "index.js",
   "dependencies": {
     "webpack": "^3.10.0"
   },
   "devDependencies": {
-    "webpack": "^3.10.0"
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.10.1"
   },
   "scripts": {
-    "test": "npm run test"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --progress  --colors --open 'Google Chrome' --config webpack.config.dev.js",
+    "dev": "webpack --progress --colors --config webpack.config.dev.js",
+    "build": "webpack --progress --colors --config webpack.config.prod.js"
   },
   "repository": {
     "type": "git",
