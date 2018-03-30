@@ -17,32 +17,21 @@ module.exports = {
     historyApiFallback: true,//不跳转
     inline: true//实时刷新
   },
-  // module: {
-  //   rules: [{
-  //     enforce: 'pre',
-  //     test: /\.js$/,
-  //     exclude: [/node_modules/, /dist/],
-  //     use: 'eslint-loader'
-  //   }, {
-  //     test: /\.less$/,
-  //     use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader']
-  //   }, {
-  //     test: /\.(png|jpg|gif)$/,
-  //     use: 'file-loader'
-  //   }, {
-  //     test: /\.(png|jpg|gif)$/,
-  //     use: [{
-  //       loader: 'url-loader',
-  //       options: {
-  //         limit: 10000
-  //       }
-  //     }]
-  //   }, {
-  //     test: /\.html$/,
-  //     use: [{
-  //       loader: 'html-loader',
-  //       options: {}
-  //     }]
-  //   }]
-  // },
+  module: {
+  rules: [
+    {
+      test: /\.css$/,
+      use: [
+        {
+          loader: "style-loader"
+        }, {
+          loader: "css-loader",
+          options: {
+            modules: true
+          }
+        }
+      ]
+    }
+    ]
+}
 }
