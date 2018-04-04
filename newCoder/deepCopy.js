@@ -1,3 +1,6 @@
+/********
+js实现深拷贝
+*********/
 var deepCopy = function(obj){
     var str, newobj = obj.constructor === Array ? [] : {};
     if(typeof obj !== 'object'){
