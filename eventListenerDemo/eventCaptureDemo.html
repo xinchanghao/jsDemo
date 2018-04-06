@@ -1,0 +1,34 @@
+<!-- 事件捕获 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>事件捕获</title>
+</head>
+
+<body>
+    <div>
+        <input type="button" value="测试事件捕获" />
+    </div>
+</body>
+</html>
+<script>
+var $input = document.getElementsByTagName("input")[0];
+var $div = document.getElementsByTagName("div")[0];
+var $body = document.getElementsByTagName("body")[0];
+
+$input.addEventListener("click", function(){
+    this.style.border = "5px solid red";
+    console.log("red")
+}, true)
+
+$div.addEventListener("click", function(){
+    this.style.border = "5px solid green";
+    console.log("green")
+}, true)
+
+$body.addEventListener("click", function(){
+    this.style.border = "5px solid yellow";
+    console.log("yellow")
+}, true)
+</script>

@@ -1,0 +1,36 @@
+<!-- 事件冒泡 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>事件冒泡</title>
+</head>
+
+<body>
+    <div>
+        <input type="button" value="测试事件冒泡" />
+    </div>
+</body>
+</html>
+<script>
+var $input = document.getElementsByTagName("input")[0];
+var $div = document.getElementsByTagName("div")[0];
+var $body = document.getElementsByTagName("body")[0];
+
+$input.onclick = function(e){
+      this.style.border = "5px solid red";
+      var e = e || window.e;
+      console.log("red");
+      e.stopPropagation(); // 阻止事件冒泡
+}
+
+$div.onclick = function(e){
+      this.style.border = "5px solid green";
+      console.log("green");
+}
+
+$body.onclick = function(e){
+      this.style.border = "5px solid yellow";
+      console.log("yellow");
+}
+</script>
