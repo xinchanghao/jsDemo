@@ -79,7 +79,7 @@ document.querySelector("#root").appendChild(greeter());
 // Greeter.js
 module.exports = function() {
   var greet = document.createElement('div');
-  greet.textContent = "Hi there and greetings!";
+  greet.textContent = "Hi boy, I am coming!";
   return greet;
 };
 
