@@ -20,3 +20,17 @@ Array.prototype.uniq = function () {
 
 var arra = [false, true, undefined, null, NaN, 0, 1, {}, {}, 'a', 'a', NaN];
 arra.uniq();
+
+Array.prototype.uniq = () => {
+  var arr = [];
+  var flag = true;
+  this.forEach((item, index) => {
+    if( item != item) {
+      flag && arr.indexOf(item) === -1 ? arr.push(item) : '';
+      flag = false;
+    } else {
+      arr.indexOf(item) === -1 ? arr.push(item) : '';
+    }
+  });
+  return arr;
+}
