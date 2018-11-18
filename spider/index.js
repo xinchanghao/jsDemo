@@ -1,6 +1,12 @@
 /*** 写个简单的爬虫, 抓取最新的招聘信息... ***/
 
 const Crawler = require("crawler");
+var schedule = require('node-schedule');
+var rule = new schedule.RecurrenceRule();  
+rule.hour = 10;
+
+
+
 const db = [];
 const getNowFormatDate = function () {
     var date = new Date();
@@ -27,13 +33,13 @@ const sendMail = function (href) {
     const smtpTransport = nodemailer.createTransport({
         service: '163',
         auth: {
-            user: 'XXXX@163.com',
-            pass: 'XXXX'//注：此处为授权码，并非邮箱密码
+            user: '********@163.com',
+            pass: '**********'//注：此处为授权码，并非邮箱密码
         }
     });
     smtpTransport.sendMail({
-        from: 'XXXX@163.com',//发件人邮箱
-        to: 'XXXX@qq.com',//收件人邮箱，多个邮箱地址间用','隔开
+        from: '**********@163.com',//发件人邮箱
+        to: '*********@qq.com, *********@qq.com',//收件人邮箱，多个邮箱地址间用','隔开
         subject: 'hi, 你有新的招聘信息哦',//邮件主题
         text: href.join("\n"),//text和html两者只支持一种
     }, function (err, res) {
@@ -42,7 +48,7 @@ const sendMail = function (href) {
 };
 
 const handleDom = function (dom, $) {
-    const baseUrl = "XXXXXX";
+    const baseUrl = "http://job.xxxx.cn";
     urlArr = [];
     for (son in dom) {
         if (typeof dom[son] == "object" && dom[son].type == "tag") {
@@ -79,11 +85,16 @@ let crawler = new Crawler({
     }
 });
 
-crawler.queue({
-    rateLimit: 2000, // `maxConnections` will be forced to 1
-    uri: 'XXXX/cms/employment/list/1?page=1',
-    // parameter1: "value1",
-    // filename: 'myImage.jpg',
-    // encoding: null,
-    jQuery: true
+var j = schedule.scheduleJob(rule, function(){  
+    console.log('The answer to life, the universe, and everything!');
+    crawler.queue({
+        rateLimit: 2000, // `maxConnections` will be forced to 1
+        uri: 'http://job.XXXXXX.cn/cms/employment/list/1?page=1',
+        // parameter1: "value1",
+        // filename: 'myImage.jpg',
+        // encoding: null,
+        jQuery: true
+    });
 });
+
+
